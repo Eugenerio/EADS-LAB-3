@@ -250,14 +250,14 @@ private:
         if (node != nullptr)
         {
             // Print right subtree
-            printTree(os, node->right, indent + 6);
+            print_tree(os, node->right, indent + 6);
 
             // Print current node
             os << std::setw(indent) << ' ';
             os << node->key << ":" << node->info << "\n";
 
             // Print left subtree
-            printTree(os, node->left, indent + 6);
+            print_tree(os, node->left, indent + 6);
         }
     }
 
@@ -361,17 +361,17 @@ public:
     }
 
     friend std::ostream &operator<<(std::ostream &os, const avl_tree &tree){
-        if (tree.getSize() > 40){
+        if (tree.get_size() > 40){
             os << "Tree is too big to print";
             return os;
         }
-        tree.printTree(os, tree.root, 0);
+        tree.print_tree(os, tree.root, 0);
         return os;
     }
 
-    bool isBalanced()
+    bool is_balanced()
     {
-        return isBalancedHelper(root);
+        return is_balanced_helper(root);
     }
 };
 

@@ -1,8 +1,12 @@
-//
-// Created by res_2 on 12.01.2024.
-//
-
-#ifndef EADS_LAB_3_AVL_TREE_TEST_H
-#define EADS_LAB_3_AVL_TREE_TEST_H
-
-#endif //EADS_LAB_3_AVL_TREE_TEST_H
+#pragma once
+void test_clear_get_size();
+void test_insert_find();
+void test_insert_get();
+void test_remove();
+void test_assignment_operator();
+void test_copy_constructor();
+void test_print();
+void test_get_largest();
+void test_get_smallest();
+void test_for_each();
+void test_word_count();
