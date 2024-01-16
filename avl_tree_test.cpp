@@ -289,6 +289,55 @@ void test_maxinfo_selector(){
     std::cout << "Maxinfo_selector tests passed!" << std::endl;
 }
 
+void test_add_operator() {
+    avl_tree<int, std::string> tree1, tree2, result;
+
+    tree1.insert(1, "One");
+    tree1.insert(2, "Two");
+    tree1.insert(3, "Three");
+
+    tree2.insert(2, "Second");
+    tree2.insert(4, "Fourth");
+    tree2.insert(5, "Fifth");
+
+    result = tree1 + tree2;
+
+    assert(result[1] == "One");
+    assert(result[2] == "Second");
+    assert(result[3] == "Three");
+    assert(result[4] == "Fourth");
+    assert(result[5] == "Fifth");
+    assert(result.get_size() == 5);
+
+    cout<<"Add operator tests passed"<< endl;
+}
+
+void test_subtract_operator() {
+    avl_tree<int, std::string> tree1, tree2, result;
+
+    tree1.insert(1, "One");
+    tree1.insert(2, "Two");
+    tree1.insert(3, "Three");
+
+    tree2.insert(2, "Second");
+    tree2.insert(4, "Fourth");
+    tree2.insert(5, "Fifth");
+
+    result = tree1 - tree2;
+
+    assert(result[1] == "One");
+    assert(result[3] == "Three");
+    assert(result.get_size() == 2);
+
+    tree1.remove(1);
+
+    assert(tree1.get_size() == 2);
+    assert(result.get_size() == 2);
+
+    cout<<"Substract operator tests passed"<< endl;
+}
+
+
 int test_count_words(){
     for (int rep = 0; rep < 5; ++rep)
     {
@@ -314,6 +363,8 @@ int test_count_words(){
 }
 
 
+
+
 int main(){
     print_separator();
     test_clear_get_size();
@@ -332,6 +383,10 @@ int main(){
     print_separator();
     
     test_maxinfo_selector();
+    print_separator();
+    test_add_operator();
+    print_separator();
+    test_subtract_operator();
     print_separator();
     test_count_words();
     
