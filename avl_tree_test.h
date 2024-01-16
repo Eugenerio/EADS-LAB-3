@@ -10,6 +10,8 @@ void test_copy_constructor();
 void test_print();
 void test_for_each();
 void test_maxinfo_selector();
+void test_add_operator();
+void test_subtract_operator();
 int test_count_words();
 
 #endif
