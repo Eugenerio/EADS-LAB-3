@@ -236,6 +236,8 @@ private:
         }
     }
 
+
+
 public:
     avl_tree() {}
 
@@ -352,6 +354,35 @@ public:
     template<typename Fn> void traverse(Fn fn) const{
         traverse(root, fn);
     }
+
+    // Adds up 2 AVL trees. If keys are present in both trees, it updates the info
+    // of the first one according to the second tree
+    avl_tree operator+(const avl_tree& src) const {
+        avl_tree result(*this); // Copy first AVL tree
+
+        // Traverse the second AVL tree and add elements to the result
+        src.traverse([&result](const Key& key, const Info& info) {
+            result.insert(key, info);
+        });
+
+        return result;
+    }
+
+    // Removes elements of the first AVL tree by keys of the second tree
+    avl_tree operator-(const avl_tree& src) const {
+        avl_tree result(*this);
+
+        src.traverse([&result](const Key& key, const Info& info) {
+            avl_tree<int, std::string>::Node* foundNode = result.find_node(result.root, key);
+            if (foundNode != nullptr) {
+                result.remove(key);
+            }
+        });
+
+        return result;
+    }
+
+
 };
 
 // External methods
